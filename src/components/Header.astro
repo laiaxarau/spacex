@@ -1,5 +1,5 @@
 ---
-import ButtonNav from '../components/ButtonNav.astro';
+import ButtonNav from './ButtonNav.astro';
 ---
 
 <main class="flex flex-col items-center w-full p-4 gap-4">
@@ -7,10 +7,9 @@ import ButtonNav from '../components/ButtonNav.astro';
 <!-- <img src=".src/assets/logo.png" alt="logo"> -->
 <nav>
     <!-- <ul class="flex flex-row gap-10 p-4 bg-amber-100 text-2xl text-amber-600 "> -->
-       <ButtonNav href="/rockets">Rockets</ButtonNav>
-       <ButtonNav href="/launches">Launches</ButtonNav>
-       <ButtonNav href="/about">About</ButtonNav>     
+       <ButtonNav link="/rockets">Rockets</ButtonNav>
+       <ButtonNav link="/">Launches</ButtonNav>
+       <ButtonNav link="/about">About</ButtonNav>     
 
-    <!-- </ul> -->
 </nav>
 </main>
