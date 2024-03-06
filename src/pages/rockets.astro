@@ -1,20 +1,15 @@
 ---
 import RocketCard from "../components/RocketCard.astro";
-import Layout from "../layouts/Layout.astro"
-import {getRockets} from "../services/spacex"
+import Layout from "../layouts/Layout.astro";
+import { getRockets } from "../services/spacex";
 
 const rockets = await getRockets();
-console.log(rockets)
-
+console.log(rockets);
 ---
 
 <Layout title="Rockets">
-<h2 class="text-slate-500 font-bold text-4xl p-6" >SpaceX Rockets</h2>
-<div class="grid xs:grid-cols-1 md:grid-cols-2 w-full content-center gap-4">
-{
-    rockets.map((rocket)=><RocketCard rocketName = {rocket.rocket_name} imgSrc= {rocket.flickr_images[0]}
-    rocketDescription = {rocket.description} />)
-}
-</div>
-
+  <h2 class="text-slate-500 font-bold text-4xl p-6">SpaceX Rockets</h2>
+  <div class="grid xs:grid-cols-1 md:grid-cols-2 w-full content-center gap-4">
+    {rockets.map((rocket) => <RocketCard rocket={rocket} />)}
+  </div>
 </Layout>
