@@ -1,0 +1,44 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import type { SpacexLaunches } from "@/types/launches";
+import { getLaunches } from "@/services/spacex";
+import Content from "@/components/Content.astro";
+
+const launches = await getLaunches();
+
+const succesText = (launch_success: boolean | null) => {
+  if (launch_success === true) return "Launch Success";
+  if (launch_success === false) return "Launch Failed";
+  return "Unknown";
+};
+---
+
+<Layout title="SpaceX Launches">
+  <Content title="SpaceX Launches">
+    <div class="grid xs:grid-cols-1 md:grid-cols-4 w-full content-center gap-8">
+      {
+        launches.map((launch: SpacexLaunches) => (
+          <div class="w-64 mx-auto bg-neutral-50 p-8 rounded-lg border-2 border-neutral-300 flex flex-col justify-between items-center">
+            <h3 class="text-xl font-bold text-center">{launch.mission_name}</h3>
+            <img
+              class="h-auto rounded-t-lg p-4 w-60"
+              src={launch.links.mission_patch_small}
+              alt={launch.mission_name}
+            />
+            <span
+              class:list={[
+                "text-gray-700 px-4 py-2 text-white rounded-lg text-xs",
+                {
+                  "bg-green-500": launch.launch_success,
+                  "bg-red-300": launch.launch_success === false,
+                  "bg-neutral-500": launch.launch_success === null,
+                },
+              ]}>
+              {succesText(launch.launch_success)}
+            </span>
+          </div>
+        ))
+      }
+    </div>
+  </Content>
+</Layout>

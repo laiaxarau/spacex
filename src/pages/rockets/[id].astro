@@ -1,7 +1,8 @@
 ---
 import { getRockets } from "../../services/spacex";
-import type { SpacexRocket } from "../../types/types";
+import type { SpacexRocket } from "../../types/rockets/types";
 import Layout from "../../layouts/Layout.astro";
+import Content from "../../components/Content.astro";
 
 interface Props {
   rocket: SpacexRocket;
@@ -20,22 +21,19 @@ const { rocket } = Astro.props;
 ---
 
 <Layout title=`Rocket ${rocket.rocket_name}`>
-  <h2 class="text-slate-500 font-bold text-4xl p-6 text-center">
-    {rocket.rocket_name}
-  </h2>
-
-  <div class="bg-slate-200 grid grid-cols-2 md:grid-cols-3 gap-4">
-    {
-      rocket.flickr_images.map((img) => (
-        <div>
-          <img class="h-auto max-w-full rounded-lg" src={img} alt="" />
-        </div>
-      ))
-    }
-  </div>
-
-  <div
-    class="p-6 text-lg border-2 border-solid border-neutral-800 m-4 rounded-sm">
-    {rocket.description}
-  </div>
+  <Content title={rocket.rocket_name}>
+    <div class="bg-slate-200 grid grid-cols-2 md:grid-cols-3 gap-4">
+      {
+        rocket.flickr_images.map((img) => (
+          <div>
+            <img class="h-auto max-w-full rounded-lg" src={img} alt="" />
+          </div>
+        ))
+      }
+    </div>
+    <div
+      class="p-6 text-lg border-2 border-solid border-neutral-800 m-4 rounded-sm">
+      {rocket.description}
+    </div>
+  </Content>
 </Layout>
