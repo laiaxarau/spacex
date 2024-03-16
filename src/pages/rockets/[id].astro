@@ -1,8 +1,14 @@
 ---
-import { getRockets } from "../../services/spacex";
-import type { SpacexRocket } from "../../types/rockets/types";
-import Layout from "../../layouts/Layout.astro";
-import Content from "../../components/Content.astro";
+import { getRockets } from "@/services/spacex";
+import type { SpacexRocket } from "@/types/rockets/types";
+import Layout from "@/layouts/Layout.astro";
+import Content from "@/components/Content.astro";
+import Calendar from "@/components/icons/Calendar.astro";
+import Flag from "@/components/icons/Flag.astro";
+import Weight from "@/components/icons/Weight.astro";
+import Height from "@/components/icons/Height.astro";
+import Diameter from "@/components/icons/Diameter.astro";
+import type { ComponentInstance } from "astro";
 
 interface Props {
   rocket: SpacexRocket;
@@ -18,22 +24,89 @@ export async function getStaticPaths() {
 }
 
 const { rocket } = Astro.props;
+console.log(rocket);
+const active = rocket.active ? "Active" : "No Active";
+
+const properties: { logo: ComponentInstance; text: string }[] = [
+  {
+    logo: Calendar({ classList: "fill-white w-5" }),
+    text: `flight: ${rocket.first_flight}`,
+  },
+  {
+    logo: '<Flag classList="fill-white w-5" />',
+    text: `Country: ${rocket.country}`,
+  },
+  {
+    logo: '<Height classList="fill-white w-5" />',
+    text: `Height: ${rocket.height.meters} meters`,
+  },
+  {
+    logo: '<Diameter classList="w-5" />',
+    text: `Diameter: ${rocket.diameter.meters} meters`,
+  },
+  {
+    logo: '<Weight classList="fill-white w-5" />',
+    text: ` Mass: ${rocket.mass.kg} kg`,
+  },
+];
 ---
 
 <Layout title=`Rocket ${rocket.rocket_name}`>
   <Content title={rocket.rocket_name}>
-    <div class="bg-slate-200 grid grid-cols-2 md:grid-cols-3 gap-4">
+    <!-- <div class="bg-purple grid grid-cols-2 md:grid-cols-3 gap-4"> -->
+    <!-- {
+      rocket.flickr_images.map((img) => (
+        <div>
+          <img class="h-auto max-w-full rounded-lg" src={img} alt="" />
+        </div>
+      ))
+    } -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
       {
-        rocket.flickr_images.map((img) => (
-          <div>
-            <img class="h-auto max-w-full rounded-lg" src={img} alt="" />
-          </div>
-        ))
+        rocket.flickr_images && (
+          <img
+            class="h-auto max-w-full rounded-lg"
+            src={rocket.flickr_images[0]}
+            alt=""
+          />
+        )
       }
-    </div>
-    <div
-      class="p-6 text-lg border-2 border-solid border-neutral-800 m-4 rounded-sm">
-      {rocket.description}
+
+      <!-- </div> -->
+      <div
+        class="grid col-span-2 grid-cols-2 text-lg border-2 border-solid border-plom rounded-sm">
+        <p class="flex flex-col p-3">{rocket.description}</p>
+        <div class="flex flex-col p-3 pl-6">
+          {
+            properties.map((property) => (
+              <div class="flex gap-2">
+                {property.logo}
+                {property.text}
+              </div>
+            ))
+          }
+          <!-- <div class="flex gap-2">
+            <Calendar classList="w-5" />First flight: {rocket.first_flight}
+          </div>
+          <div class="flex gap-2">
+            <Flag classList="fill-white w-5" />
+            Country: {rocket.country}
+          </div>
+          <div class="flex gap-2">
+            <Height classList="fill-white w-5" />
+            Height: {rocket.height.meters} meters
+          </div>
+          <div class="flex gap-2">
+            <Diameter classList="fill-white w-5" />
+            Diameter: {rocket.diameter.meters} meters
+          </div>
+          <div class="flex gap-2">
+            <Weight classList="fill-white w-5" />
+            Mass: {rocket.mass.kg} kg
+          </div> -->
+          <span>{active}</span>
+        </div>
+      </div>
     </div>
   </Content>
 </Layout>

@@ -54,3 +54,5 @@ All commands are run from the root of the project, from a terminal:
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
 
 <!-- https://app.quicktype.io/ per convertir els tipus en typescript -->
+<!-- https://colorpalettes.net/color-palette-4493/ -->
+<!-- https://colorpalettes.net/color-palette-4457/ -->
