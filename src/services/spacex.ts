@@ -1,3 +1,4 @@
+import type { SpaceXAbout } from "@/types/about";
 import type { SpacexLaunches } from "../types/launches/types";
 import type { SpacexRocket } from "../types/rockets/types";
 

@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Content from "../components/Content.astro";
+import { aboutData } from "../services/data/about";
 ---
 
 <Layout title="About this project">
@@ -8,34 +9,22 @@ import Content from "../components/Content.astro";
   <div class="px-4 md:px-6 lg:px-8 xl:px-10">
     <h2 class="font-bold text-2xl px-6 text-lila">Trying my skills</h2>
   </div>
-  <div class="px-32 py-6 leading-10">
-    <p class="leading-7">
-      Here you will find some information about SpaceX Rockets and Launches
-      coming from the free API of SapceX.
-    </p>
-    <p class="leading-7">
-      With that project I could pull data from the API and used to show
-      different information using some API fetch; even filtering, sorting and
-      slicing the results.
-    </p>
-    <p class="leading-7">
-      This is my first Astro project where I found my first approach to a
-      framework.Astro allows pupils like me to understand how a component works
-      and makes the learning easy...or that's what my mentor says.
-    </p>
-    <p class="leading-7">
-      I also discovered TailwindCSS which allows me to create some amazing
-      designs, perhaps with a lack of taste but allows me to create a lot of
-      styles and different features comfortably. Also, I used the config file to
-      add a dark mode and a color palette to work with fixed colors and add
-      control to the job.
-    </p>
-    <p class="leading-7">
-      Furthermore, it is the first time I worked with Git Branches using the
-      console commands. It was nice to see all the steps; but it was kind of
-      challenging to merge branches.
-    </p>
-    <p class="leading-7">Hope you enjoy my work.</p>
-    <p class="leading-7">Best regards.</p>
+  <div class="px-32 py-6 grid gap-5 text-lg text-malva">
+    {
+      aboutData.map((element) => (
+        <p class="leading-7">
+          {element.text}
+          {element.link && (
+            <>
+              <a class="underline" href={element.link.href}>
+                {element.link.text_link}
+              </a>
+              .
+            </>
+          )}
+          {element.bold_text && <b class="underline">{element.bold_text}</b>}
+        </p>
+      ))
+    }
   </div>
 </Layout>
