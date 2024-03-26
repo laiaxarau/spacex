@@ -1,0 +1,15 @@
+---
+import { getCompanyInfo } from "@/services/spacex";
+const companyInfo = await getCompanyInfo();
+---
+
+<div class="text-lg text-center font-bold">
+  <p>
+    {companyInfo.summary} It was founded by {companyInfo.founder}.
+  </p>
+  <p>
+    The company has {companyInfo.employees} employees and it is based in {
+      companyInfo.headquarters.city
+    },{companyInfo.headquarters.state}.
+  </p>
+</div>

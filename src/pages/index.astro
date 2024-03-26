@@ -1,16 +1,17 @@
 ---
 import Content from "@/components/Content.astro";
 import Layout from "@/layouts/Layout.astro";
-import { getCompanyInfo, getRocketsV4 } from "@/services/spacex";
 import Articles from "@/components/Articles.astro";
-
-const rocketsV4 = await getRocketsV4();
-const companyInfo = await getCompanyInfo();
+import CompanyInfo from "@/components/CompanyInfo.astro";
+import Slider from "@/components/Slider.astro";
 ---
 
 <Layout title="Another SpaceX API">
   <Content title="Welcome to my SpaceX site">
-    <Articles />
+    <Slider />
+  </Content>
+  <Content subtitle="About SpaceX">
+    <CompanyInfo />
   </Content>
   <Content subtitle="Latest News">
     <Articles />
