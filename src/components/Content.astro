@@ -7,11 +7,11 @@ interface props {
 const { title, subtitle } = Astro.props;
 ---
 
-<section class="max-w-7xl mx-auto px-4 py-4 md:px-6 lg:px-8 xl:px-10">
-  {title && <h1 class="font-bold text-4xl p-6 text-malva">{title}</h1>}
+<section class="max-w-7xl mx-auto px-6 py-6 md:px-6 lg:px-8 xl:px-10">
+  {title && <h1 class="font-bold text-4xl p-2 py-4 text-malva">{title}</h1>}
   {
     subtitle && (
-      <h3 class="font-bold text-2xl px-6 py-2 text-lila">{subtitle}</h3>
+      <h3 class="font-bold text-2xl px-2 pb-4 text-lila">{subtitle}</h3>
     )
   }
   <slot />
