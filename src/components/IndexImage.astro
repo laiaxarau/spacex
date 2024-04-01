@@ -6,10 +6,6 @@ const imageIndex = await getPhotoIndex();
 
 <style>
   img {
-    /* mask-image:
-      linear-gradient(to top, black 80%, transparent) top / 20% 1000%,
-      linear-gradient(to bottom, black 80%, transparent) bottom / 20% 100%; */
-
     mask-image: linear-gradient(
       to top,
       transparent 10%,
@@ -23,4 +19,3 @@ const imageIndex = await getPhotoIndex();
   }
 </style>
 <img src={imageIndex} alt="" class="w-full" />
-<!-- <div class=`bg-[url(${imageIndex})] h-56 w-full`></div> -->
