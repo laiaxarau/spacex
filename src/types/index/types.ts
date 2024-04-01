@@ -5,6 +5,7 @@ export type SpacexHistory = {
     event_date_unix: number;
     details?:         string;
     id?:              string;
+    flight_number: number;
 }
 
 export type Links = {

@@ -3,8 +3,8 @@ import { getRockets } from "@/services/spacex";
 import type { SpacexRocket } from "@/types/rockets/types";
 import Layout from "@/layouts/Layout.astro";
 import Content from "@/components/Content.astro";
-import type { ComponentInstance } from "astro";
 import Icon from "@/components/icons/Icon.astro";
+import Slider from "@/components/Slider.astro";
 
 interface Props {
   rocket: SpacexRocket;
@@ -26,16 +26,7 @@ const active = rocket.active ? "Active" : "No Active";
 <Layout title=`Rocket ${rocket.rocket_name}`>
   <Content title={rocket.rocket_name}>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-      {
-        rocket.flickr_images && (
-          <img
-            class="h-auto max-w-full rounded-lg"
-            src={rocket.flickr_images[0]}
-            alt=""
-          />
-        )
-      }
-
+      <Slider images={rocket.flickr_images} />
       <div
         class="grid col-span-2 md:grid-cols-2 text-lg border-2 border-solid border-plom rounded-lg p-6">
         <p class="flex flex-col p-3-3">{rocket.description}</p>

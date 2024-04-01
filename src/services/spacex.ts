@@ -33,8 +33,20 @@ export const getCompanyInfo = async () => {
 }
 
 export const getCompanyHistory = async () => {
-  const response = await fetch ("https://api.spacexdata.com/v4/history");
+  const response = await fetch ("https://api.spacexdata.com/v3/history");
   const data = (await response.json()) as SpacexHistory[];
-  return data.sort((a,b)=>(a.event_date_unix - b.event_date_unix)).slice(0,3)
+  return data.filter((article)=> article.flight_number !== null).sort((a,b)=>(b.event_date_unix - a.event_date_unix)).slice(0,3)
  
+}
+
+export const getPhotoIndex = async () => {
+  const response = await fetch ("https://api.spacexdata.com/v3/rockets/starship/");
+  const data = (await response.json()) as SpacexRocket;
+  return data.flickr_images[3];
+}
+
+export const getPhotoArticle = async (id: string) => {
+  const response = await fetch (`https://api.spacexdata.com/v3/launches/${id}` );
+  const data = (await response.json()) as SpacexLaunches;
+  return data.links.flickr_images[2];
 }
