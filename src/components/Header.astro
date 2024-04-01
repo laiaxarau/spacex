@@ -5,9 +5,9 @@ import Logo from "@/components/Logo.astro";
 
 <main>
   <div
-    class="flex items-center max-w-7xl mx-auto px-4 md:px-6 lg:px-8 xl:px-10 mt-8 justify-evenly w-full">
+    class="flex flex-col md:flex-row items-center max-w-7xl mx-auto px-4 md:px-6 lg:px-8 xl:px-10 mt-8 justify-evenly w-full">
     <Logo />
-    <nav>
+    <nav class="pt-4 md:pt-0">
       <ButtonNav link="/rockets">Rockets</ButtonNav>
       <ButtonNav link="/launches">Launches</ButtonNav>
       <ButtonNav link="/about">About</ButtonNav>

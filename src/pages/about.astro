@@ -5,11 +5,8 @@ import { aboutData } from "../services/data/about";
 ---
 
 <Layout title="About this project">
-  <Content title="What is this project about?" />
-  <div class="px-4 md:px-6 lg:px-8 xl:px-10">
-    <h2 class="font-bold text-2xl px-6 text-lila">Trying my skills</h2>
-  </div>
-  <div class="px-32 py-6 grid gap-5 text-lg text-malva">
+  <Content title="What is this project about?" subtitle="Trying my skills">
+    <!-- <div class="px-32 py-6 grid gap-5 text-lg text-malva"> -->
     {
       aboutData.map((element) => (
         <p class="leading-7">
@@ -26,5 +23,6 @@ import { aboutData } from "../services/data/about";
         </p>
       ))
     }
-  </div>
+    <!-- </div> -->
+  </Content>
 </Layout>

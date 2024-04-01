@@ -4,18 +4,15 @@ import { getCompanyHistory, getPhotoArticle } from "@/services/spacex";
 const companyHistory = await getCompanyHistory();
 ---
 
-<div class="grid gap-6 lg:grid-cols-3 xl:gap-x-12">
+<div class="grid gap-6 md:grid-cols-3 xl:gap-x-12">
   {
     companyHistory.map(async (article) => (
       <div class="mb-6 lg:mb-0">
         <div
-          class="relative mb-6  h-48 overflow-hidden rounded-lg shadow-lg dark:shadow-black/20"
+          class="bg-cover bg-center relative mb-6 h-52 xl:h-48 overflow-hidden rounded-lg shadow-lg dark:shadow-black/20 "
+          style=`background-image: url(${await getPhotoArticle(article.flight_number.toString())})`
           data-te-ripple-init
           data-te-ripple-color="light">
-          <img
-            src={await getPhotoArticle(article.flight_number.toString())}
-            alt={article.title}
-          />
           <a href={article.links.article}>
             <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]" />
           </a>

@@ -9,7 +9,7 @@ const rockets = await getRockets();
 ---
 
 <Layout title="Rockets">
-  <Content title="SpaceX Rockets">
+  <Content title="SpaceX Rockets" subtitle="Check the Rocket Data">
     <div class="grid xs:grid-cols-1 md:grid-cols-2 w-full content-center gap-4">
       {rockets.map((rocket: SpacexRocket) => <RocketCard rocket={rocket} />)}
     </div>
