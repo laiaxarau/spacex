@@ -1,0 +1,26 @@
+---
+import { getPhotoIndex } from "../services/spacex";
+
+const imageIndex = await getPhotoIndex();
+---
+
+<style>
+  img {
+    /* mask-image:
+      linear-gradient(to top, black 80%, transparent) top / 20% 1000%,
+      linear-gradient(to bottom, black 80%, transparent) bottom / 20% 100%; */
+
+    mask-image: linear-gradient(
+      to top,
+      transparent 10%,
+      #000 15% 90%,
+      transparent 95%
+    );
+    mask-size: 135%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-composite: intersect;
+  }
+</style>
+<img src={imageIndex} alt="" class="w-full" />
+<!-- <div class=`bg-[url(${imageIndex})] h-56 w-full`></div> -->
