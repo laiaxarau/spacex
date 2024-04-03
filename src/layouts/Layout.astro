@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 interface Props {
   title: string;
@@ -8,23 +9,30 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/LaiaXarau.png" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
+    <title>
+      Laia's Astro Site - {title}
+    </title></head
+  >
+
   <body class="bg-purple">
     <style>
       :global(*) {
         color-scheme: dark;
       }
+
+      :global(body) {
+        margin-bottom: 100px;
+      }
     </style>
     <Header />
     <slot />
+    <Footer />
   </body>
 </html>
