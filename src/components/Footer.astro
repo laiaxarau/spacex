@@ -5,15 +5,17 @@ const socialMedia = [
   { name: "github", href: "https://github.com/laiaxarau" },
   { name: "linkedin", href: "https://www.linkedin.com/in/laiaxarau/" },
   { name: "gmail", href: "mailto:laiaxara@gmail.com" },
-  { name: "laiaxarau2", href: "https://github.com/laiaxarau" },
+  { name: "laiaxarau2", href: "https://laiaxarau.com/" },
 ];
 ---
 
 <footer
   class="fixed bottom-0 left-0 z-20 w-full p-4 border-t bg-purple border-malva-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
   <span class="text-sm text-center"
-    >© 2024 <a href="https://github.com/laiaxarau" class="hover:underline"
-      >Laia Xarau</a
+    >© 2024 <a
+      href="https://laiaxarau.com/"
+      class="hover:underline"
+      target="_blank">Laia Xarau</a
     >. All Rights Reserved.
   </span>
   <ul
@@ -21,7 +23,7 @@ const socialMedia = [
     {
       socialMedia.map((media) => (
         <li>
-          <a href={media.href}>
+          <a href={media.href} target="_blank">
             <Icon customClass="fill-white m-2" name={media.name} />
           </a>
         </li>
